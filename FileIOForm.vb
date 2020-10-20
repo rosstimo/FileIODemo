@@ -2,11 +2,12 @@
 'Imports System.IO
 Public Class FileIOForm
     Dim dataArray() As String
+    Dim currentFile As String
 
 
 
     Sub DontBeDumb() Handles Me.Load
-        Dim fileName As String = "C:\Users\rosstimo\Documents\__FileDemoStuff\myfile.txt"
+        Dim fileName As String = "myfile.txt"
         AppendFile(fileName, "save me to a file...")
 
 
@@ -40,6 +41,8 @@ Public Class FileIOForm
         End Try
 
     End Sub
+
+
     Private Sub ReadFile(ByVal filename As String)
         Dim fileNumber As Integer = FreeFile()
         Dim temp As String
@@ -55,11 +58,12 @@ Public Class FileIOForm
                 dataString$ &= temp$
                 'DisplayListBox.Items.Add(temp$)
             Loop
-
+        Catch noFile As System.IO.IOException
+            SetCurrentFile()
         Catch ex As Exception
             'TODO: user select file if it doesn't exist
             'handle file in use exception
-            'verify other possible exceptions     
+            'verify other possible exceptions 
             Console.WriteLine(ex.Message)
         Finally
             FileClose(fileNumber)
@@ -76,8 +80,8 @@ Public Class FileIOForm
     End Sub
 
     Private Sub UpdateButton_Click(sender As Object, e As EventArgs) Handles UpdateButton.Click
-        Dim fileName As String = "C:\Users\rosstimo\OneDrive\Sync\github\__RCET0265-F20\FileIODemo\email.txt"
-        ReadFile(fileName)
+        'Dim fileName As String = "../../email.txt"
+        ReadFile(currentFile)
     End Sub
 
     Private Sub DisplayListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DisplayListBox.SelectedIndexChanged
@@ -92,4 +96,39 @@ Public Class FileIOForm
         emailTextBox.Text = tempArray(3)
 
     End Sub
+
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+        SetCurrentFile()
+    End Sub
+
+    Sub SetCurrentFile()
+        OpenFileDialog.ShowDialog()
+        currentFile = OpenFileDialog.FileName
+        'CurrentFileLabel.Text = currentFile
+        Me.Text = currentFile
+        'Console.WriteLine(currentFile)
+
+    End Sub
+
+    Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
+        Dim saveFileName As String
+
+        SaveFileDialog.ShowDialog()
+        saveFileName = SaveFileDialog.FileName
+
+        WriteNewFile(saveFileName)
+    End Sub
+
+    Sub WriteNewFile(newFileName As String)
+
+        'write all records in array to new file
+        'loop the array
+        'append each record/line
+        'close the file
+        For Each record In dataArray
+            AppendFile(newFileName, "$$" & record)
+        Next
+
+    End Sub
+
 End Class

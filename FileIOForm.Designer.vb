@@ -37,10 +37,12 @@ Partial Class FileIOForm
         Me.ZipLabel = New System.Windows.Forms.Label()
         Me.EmailLabel = New System.Windows.Forms.Label()
         Me.InputGroupBox = New System.Windows.Forms.GroupBox()
+        Me.CurrentFileLabel = New System.Windows.Forms.Label()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ContextMenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TopMenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -54,6 +56,9 @@ Partial Class FileIOForm
         Me.StateCheckBox = New System.Windows.Forms.CheckBox()
         Me.FilterGroupBox = New System.Windows.Forms.GroupBox()
         Me.FilterButton = New System.Windows.Forms.Button()
+        Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InputGroupBox.SuspendLayout()
         Me.TopMenuStrip.SuspendLayout()
         Me.ActionsGroupBox.SuspendLayout()
@@ -169,6 +174,7 @@ Partial Class FileIOForm
         '
         'InputGroupBox
         '
+        Me.InputGroupBox.Controls.Add(Me.CurrentFileLabel)
         Me.InputGroupBox.Controls.Add(Me.FirstNameTextBox)
         Me.InputGroupBox.Controls.Add(Me.EmailLabel)
         Me.InputGroupBox.Controls.Add(Me.LastNameTextBox)
@@ -186,6 +192,14 @@ Partial Class FileIOForm
         Me.InputGroupBox.Size = New System.Drawing.Size(381, 258)
         Me.InputGroupBox.TabIndex = 13
         Me.InputGroupBox.TabStop = False
+        '
+        'CurrentFileLabel
+        '
+        Me.CurrentFileLabel.AutoSize = True
+        Me.CurrentFileLabel.Location = New System.Drawing.Point(7, 232)
+        Me.CurrentFileLabel.Name = "CurrentFileLabel"
+        Me.CurrentFileLabel.Size = New System.Drawing.Size(0, 20)
+        Me.CurrentFileLabel.TabIndex = 13
         '
         'ContextMenuStrip
         '
@@ -206,9 +220,16 @@ Partial Class FileIOForm
         '
         'FileToolStripMenuItem
         '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(54, 29)
         Me.FileToolStripMenuItem.Text = "&File"
+        '
+        'OpenToolStripMenuItem
+        '
+        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.OpenToolStripMenuItem.Text = "&Open"
         '
         'EditToolStripMenuItem
         '
@@ -330,6 +351,16 @@ Partial Class FileIOForm
         Me.FilterButton.Text = "Apply Filter"
         Me.FilterButton.UseVisualStyleBackColor = True
         '
+        'OpenFileDialog
+        '
+        Me.OpenFileDialog.FileName = "OpenFileDialog1"
+        '
+        'SaveToolStripMenuItem
+        '
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.SaveToolStripMenuItem.Text = "&Save"
+        '
         'FileIOForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -390,4 +421,9 @@ Partial Class FileIOForm
     Friend WithEvents LastNameCheckBox As CheckBox
     Friend WithEvents FilterButton As Button
     Friend WithEvents FilterGroupBox As GroupBox
+    Friend WithEvents OpenFileDialog As OpenFileDialog
+    Friend WithEvents SaveFileDialog As SaveFileDialog
+    Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CurrentFileLabel As Label
+    Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
 End Class
