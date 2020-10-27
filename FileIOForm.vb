@@ -102,6 +102,8 @@ Public Class FileIOForm
     End Sub
 
     Sub SetCurrentFile()
+        OpenFileDialog.Filter = "Text Files (*.txt)|*.txt|VB files|*.vb|All files (*.*)|*.*"
+        'OpenFileDialog.
         OpenFileDialog.ShowDialog()
         currentFile = OpenFileDialog.FileName
         'CurrentFileLabel.Text = currentFile
@@ -112,7 +114,8 @@ Public Class FileIOForm
 
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
         Dim saveFileName As String
-
+        SaveFileDialog.Filter = "Text Files (*.txt)|*.txt|VB files|*.vb|All files (*.*)|*.*"
+        SaveFileDialog.FileName = $"Document_{System.DateTime.Now.Year}{System.DateTime.Now.Month}{System.DateTime.Now.Day}"
         SaveFileDialog.ShowDialog()
         saveFileName = SaveFileDialog.FileName
 
