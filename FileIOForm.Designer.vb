@@ -43,6 +43,7 @@ Partial Class FileIOForm
         Me.TopMenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -58,7 +59,6 @@ Partial Class FileIOForm
         Me.FilterButton = New System.Windows.Forms.Button()
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
-        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InputGroupBox.SuspendLayout()
         Me.TopMenuStrip.SuspendLayout()
         Me.ActionsGroupBox.SuspendLayout()
@@ -228,8 +228,14 @@ Partial Class FileIOForm
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(158, 34)
         Me.OpenToolStripMenuItem.Text = "&Open"
+        '
+        'SaveToolStripMenuItem
+        '
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(158, 34)
+        Me.SaveToolStripMenuItem.Text = "&Save"
         '
         'EditToolStripMenuItem
         '
@@ -354,12 +360,6 @@ Partial Class FileIOForm
         'OpenFileDialog
         '
         Me.OpenFileDialog.FileName = "OpenFileDialog1"
-        '
-        'SaveToolStripMenuItem
-        '
-        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
-        Me.SaveToolStripMenuItem.Text = "&Save"
         '
         'FileIOForm
         '
